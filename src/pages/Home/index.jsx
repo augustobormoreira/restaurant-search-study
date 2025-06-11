@@ -4,13 +4,13 @@ import MaterialIcon from '@material/react-material-icon'
 
 import logo from '../../assets/logo.svg'
 import restaurante from '../../assets/restaurante-fake.png'
-import { Card, RestaurantCard } from '../../components'
+import { Card, RestaurantCard, Modal } from '../../components'
 
 import { Wrapper, Container, Search, Logo, Map, Carousel, CarouselTitle } from './styles'
 
 const Home = () => {
-    //inicio da implementação do carroussel parte 3
     const [inputValue, setInputValue] = useState('');
+    const [modalOpened, setModalOpened] = useState(false);
     const settings = {
         dots: false,
         infinite: true,
@@ -18,6 +18,7 @@ const Home = () => {
         slidesToShow: 4,
         slidesToScroll: 4,
         adaptiveHeight: true,
+        arrows: false
     };
 
     return (
@@ -43,10 +44,10 @@ const Home = () => {
                     <Card photo={restaurante} title="Jarbas"/>
                 </Carousel>
             </Search>
-            
             <RestaurantCard />
         </Container>
-        <Map/>
+        <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}/>
+        <Map/> 
     </Wrapper>
     )
 }
