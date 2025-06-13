@@ -1,0 +1,15 @@
+diff --git a/node_modules/google-maps-react/dist/GoogleApiComponent.js b/node_modules/google-maps-react/dist/GoogleApiComponent.js
+index 2efc2dd..c1428ef 100644
+--- a/node_modules/google-maps-react/dist/GoogleApiComponent.js
++++ b/node_modules/google-maps-react/dist/GoogleApiComponent.js
+@@ -146,8 +146,8 @@
+         }
+ 
+         _createClass(Wrapper, [{
+-          key: 'UNSAFE_componentWillReceiveProps',
+-          value: function UNSAFE_componentWillReceiveProps(props) {
++          key: 'componentDidUpdate',
++          value: function componentDidUpdate(props) {
+             // Do not update input if it's not dynamic
+             if (typeof input !== 'function') {
+               return;
