@@ -1,23 +1,11 @@
 import React, { useState } from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
 
-const containerStyle = {
-    width: '100%',
-    height: '100vh',
-}
 
-const center = {
-  lat: -3.745,
-  lng: -38.523,
-}
 
-const MapContainer = () => {
+
+const MapContainer = (props) => {
     const [curLocation, setCurLocation] = useState(null);
-
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY
-    })
 
     const getCurrentLocation = () => {
         if(navigator.geolocation){
@@ -38,15 +26,16 @@ const MapContainer = () => {
         getCurrentLocation()
     }, []);
 
-    return isLoaded && curLocation ? (
-        <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={curLocation}
-        zoom={15}
-        ></GoogleMap>
-    ) : (
-        <>
-        </>
+    return (
+        <APIProvider
+        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
+            <Map
+            style={{width: '100vw', height: '100vw'}}
+            defaultCenter={curLocation}
+            defaultZoom={10}
+            gestureHandling={'greedy'}
+            disableDefaultUI={true}/>
+        </APIProvider>
     )
 };
 
