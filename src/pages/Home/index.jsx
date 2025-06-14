@@ -46,7 +46,7 @@ const Home = () => {
             </Search>
             <RestaurantCard />
         </Container>
-        <Map/> 
+        <Map/>
         {/*<Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}/>*/}
     </Wrapper>
     )
